@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Accueil - CRUDcroustillant {% endblock %}
+
+{% block body %}
+    {% include '_header.html.twig' %}
+
+    <img src="{{ asset('images/header.jpg') }}" alt="miam">
+
+
+    <main>
+        <h2>Bienvenue sur CRUDcroustillant !</h2>
+        <p>Découvrez nos délicieux burgers.</p>
+    </main>
+    
+    <nav>
+        <a href="{{ path('burger') }}">burger</a>
+    </nav>
+
+    {% include '_footer.html.twig' %}
+{% endblock %}

@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ dataBurger.name }} {% endblock %}
+
+{% block body %} Vous regardez les détails du {{ dataBurger.name }}
+
+    {{ dataBurger.detail }}
+{% endblock %}

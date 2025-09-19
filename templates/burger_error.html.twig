@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Mauvais Burgers - CRUDcroustillant ! {% endblock %}
+
+{% block body %}
+    Tu tente de trouver un burger qui n'existe pas
+
+    Le burger ne te plait pas ? Mon frère en christ tu a fait le burger
+
+    Ceci est la liste des burgers qui existe vraiment (((((((((;
+    <nav>
+        <a href="{{ path('index') }}">home</a>
+        {% for id,burger in listeBurger %}
+            <a href="{{ path('burger_id', {'id':id} ) }}">{{ burger.name }}</a>
+        {% endfor %}
+    </nav>
+{% endblock %}

@@ -16,6 +16,9 @@ class Image
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
+    #[ORM\OneToOne(mappedBy: 'Image', cascade: ['persist', 'remove'])]
+    private ?Burger $burger = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -36,6 +39,28 @@ class Image
     public function setName(string $name): static
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getBurger(): ?Burger
+    {
+        return $this->burger;
+    }
+
+    public function setBurger(?Burger $burger): static
+    {
+        // unset the owning side of the relation if necessary
+        if ($burger === null && $this->burger !== null) {
+            $this->burger->setImage(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($burger !== null && $burger->getImage() !== $this) {
+            $burger->setImage($this);
+        }
+
+        $this->burger = $burger;
 
         return $this;
     }

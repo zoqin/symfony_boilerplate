@@ -16,6 +16,9 @@ class Commentaire
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
+    #[ORM\ManyToOne(inversedBy: 'Commentaires')]
+    private ?Burger $burger = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -36,6 +39,18 @@ class Commentaire
     public function setName(string $name): static
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getBurger(): ?Burger
+    {
+        return $this->burger;
+    }
+
+    public function setBurger(?Burger $burger): static
+    {
+        $this->burger = $burger;
 
         return $this;
     }
